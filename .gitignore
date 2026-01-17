@@ -1,0 +1,28 @@
+# Bazel
+/bazel-*
+.bazelrc.user
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+venv/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

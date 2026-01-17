@@ -1,0 +1,41 @@
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+load("@pypi//:requirements.bzl", "requirement")
+
+py_library(
+    name = "app_lib",
+    srcs = [
+        "main.py",
+        "auth.py",
+        "database.py",
+        "models.py",
+        "schemas.py",
+        "routers/__init__.py",
+        "routers/auth.py",
+        "routers/portal.py",
+        "routers/survey.py",
+        "routers/accounting.py",
+        "routers/career.py",
+        "routers/supply.py",
+    ],
+    deps = [
+        requirement("fastapi"),
+        requirement("uvicorn"),
+        requirement("python-dotenv"),
+        requirement("sqlalchemy"),
+        requirement("psycopg2-binary"),
+        requirement("passlib"),
+        requirement("python-jose"),
+        requirement("python-multipart"),
+        requirement("email-validator"),
+    ],
+)
+
+py_binary(
+    name = "server",
+    srcs = ["main.py"],
+    main = "main.py",
+    deps = [
+        ":app_lib",
+        requirement("uvicorn"),
+    ],
+)

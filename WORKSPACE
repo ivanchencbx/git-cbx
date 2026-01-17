@@ -1,0 +1,1 @@
+# Using bzlmod (MODULE.bazel)

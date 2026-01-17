@@ -1,0 +1,37 @@
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@npm//web:next/package_json.bzl", next_bin = "bin")
+
+npm_link_all_packages(name = "node_modules")
+
+filegroup(
+    name = "srcs",
+    srcs = glob([
+        "app/**/*",
+        "public/**/*",
+        "*.js",
+        "*.json",
+        "*.ts",
+        "*.tsx",
+        "*.css",
+    ]),
+)
+
+next_bin.next_binary(
+    name = "dev",
+    args = ["dev"],
+    data = [
+        ":srcs",
+        ":node_modules",
+    ],
+    chdir = "web",
+)
+
+next_bin.next_binary(
+    name = "build",
+    args = ["build"],
+    data = [
+        ":srcs",
+        ":node_modules",
+    ],
+    chdir = "web",
+)
