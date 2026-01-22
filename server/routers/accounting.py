@@ -81,3 +81,49 @@ def get_summary(
         "expense": total_expense,
         "balance": balance
     }
+@router.patch("/expenses/{expense_id}", response_model=schemas.Expense)
+def update_expense(
+    expense_id: int,
+    expense_update: schemas.ExpenseCreate,
+    current_user: dict = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db)
+):
+    user = db.query(models.User).filter(models.User.email == current_user["email"]).first()
+    expense = db.query(models.Expense).filter(
+        models.Expense.id == expense_id,
+        models.Expense.user_id == user.id
+    ).first()
+    
+    if not expense:
+        raise HTTPException(status_code=404, detail="Expense not found")
+    
+    # Update expense fields
+    expense.category_id = expense_update.category_id
+    expense.amount = int(expense_update.amount * 100)
+    expense.description = expense_update.description
+    expense.date = expense_update.date
+    expense.is_income = expense_update.is_income
+    
+    db.commit()
+    db.refresh(expense)
+    return expense
+
+@router.delete("/expenses/{expense_id}")
+def delete_expense(
+    expense_id: int,
+    current_user: dict = Depends(auth.get_current_user),
+    db: Session = Depends(database.get_db)
+):
+    user = db.query(models.User).filter(models.User.email == current_user["email"]).first()
+    expense = db.query(models.Expense).filter(
+        models.Expense.id == expense_id,
+        models.Expense.user_id == user.id
+    ).first()
+    
+    if not expense:
+        raise HTTPException(status_code=404, detail="Expense not found")
+    
+    db.delete(expense)
+    db.commit()
+    
+    return {"message": "Expense deleted successfully"}

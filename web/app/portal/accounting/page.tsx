@@ -18,7 +18,10 @@ import {
     Zap,
     ShoppingBag,
     Heart,
-    MoreHorizontal
+    MoreHorizontal,
+    Edit2,
+    Trash2,
+    ArrowLeft
 } from "lucide-react";
 
 interface Transaction {
@@ -79,7 +82,12 @@ export default function AccountingPage() {
             <div className="p-8 w-full max-w-5xl mx-auto">
                 <header className="flex justify-between items-center mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-800">Accounting</h1>
+                        <div className="flex items-center gap-4 mb-2">
+                            <Link href="/portal" className="p-2 hover:bg-gray-200 rounded-full" title="Back to Portal">
+                                <ArrowLeft size={24} color="var(--secondary)" />
+                            </Link>
+                            <h1 className="text-3xl font-bold text-gray-800">Accounting</h1>
+                        </div>
                         <p className="text-gray-500">Track your income and expenses</p>
                     </div>
                     <Link href="/portal/accounting/add" className="btn-primary flex items-center gap-2" style={{ width: 'auto' }}>
@@ -137,8 +145,8 @@ export default function AccountingPage() {
                     ) : (
                         <div className="divide-y divide-gray-100">
                             {transactions.map(tx => (
-                                <div key={tx.id} className="p-4 hover:bg-gray-50 flex items-center justify-between transition-colors">
-                                    <div className="flex items-center gap-4">
+                                <div key={tx.id} className="p-4 hover:bg-gray-50 flex items-center justify-between transition-colors group">
+                                    <div className="flex items-center gap-4 flex-1">
                                         <div className={`p-3 rounded-full ${tx.is_income ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'}`}>
                                             {tx.is_income ? <ArrowDownLeft size={20} /> : <ArrowUpRight size={20} />}
                                         </div>
@@ -147,9 +155,20 @@ export default function AccountingPage() {
                                             <p className="text-xs text-gray-400">{new Date(tx.date).toLocaleDateString()}</p>
                                         </div>
                                     </div>
-                                    <span className={`font-bold ${tx.is_income ? 'text-green-600' : 'text-gray-800'}`}>
-                                        {tx.is_income ? '+' : '-'}{formatMoney(tx.amount / 100)}
-                                    </span>
+                                    <div className="flex items-center gap-2">
+                                        <span className={`font-bold ${tx.is_income ? 'text-green-600' : 'text-gray-800'}`}>
+                                            {tx.is_income ? '+' : '-'}{formatMoney(tx.amount / 100)}
+                                        </span>
+                                        <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <Link
+                                                href={`/portal/accounting/edit/${tx.id}`}
+                                                className="p-2 hover:bg-blue-100 rounded text-blue-600 transition"
+                                                title="Edit"
+                                            >
+                                                <Edit2 size={16} />
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
                             ))}
                         </div>

@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/auth-context";
 import { apiClient } from "@/lib/api";
 import { ArrowLeft, Save } from "lucide-react";
 import Link from "next/link";
 
 export default function AddApplicationPage() {
     const router = useRouter();
+    const { isAuthenticated } = useAuth();
     const [formData, setFormData] = useState({
         company: "",
         position: "",
@@ -16,6 +18,14 @@ export default function AddApplicationPage() {
         notes: ""
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        // Check authentication
+        if (!isAuthenticated) {
+            router.push("/login");
+            return;
+        }
+    }, [isAuthenticated, router]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

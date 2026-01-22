@@ -42,7 +42,7 @@ export default function RegisterPage() {
                 <form onSubmit={handleSubmit}>
                     {error && <div className="text-red-500 mb-4 text-center">{error}</div>}
 
-                    <div className="form-group">
+    <div className="form-group">
                         <label className="form-label" htmlFor="fullname">Full Name</label>
                         <input
                             id="fullname"

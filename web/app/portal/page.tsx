@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../auth-context";
 import { apiClient } from "@/lib/api";
 import Link from "next/link";
+import Image from "next/image";
 import {
     Users,
     PieChart,
@@ -13,7 +14,8 @@ import {
     LogOut,
     Home,
     Menu,
-    X
+    X,
+    User
 } from "lucide-react";
 
 interface ModuleStat {
@@ -85,7 +87,14 @@ export default function PortalPage() {
 
             {/* Sidebar */}
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-                <div className="sidebar-logo">
+                <div className="sidebar-logo flex items-center gap-3">
+                    <Image 
+                        src="/logo.png" 
+                        alt="cbx.life Logo" 
+                        width={40} 
+                        height={40}
+                        className="rounded"
+                    />
                     cbx.life
                 </div>
 
@@ -93,6 +102,10 @@ export default function PortalPage() {
                     <Link href="/portal" className="nav-item active">
                         <Home size={20} />
                         <span>Overview</span>
+                    </Link>
+                    <Link href="/portal/profile" className="nav-item">
+                        <User size={20} />
+                        <span>My Profile</span>
                     </Link>
                     <Link href="/portal/survey" className="nav-item">
                         <Users size={20} />

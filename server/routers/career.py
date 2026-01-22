@@ -56,6 +56,8 @@ def create_application(
     db: Session = Depends(database.get_db)
 ):
     user = db.query(models.User).filter(models.User.email == current_user["email"]).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
     
     db_app = models.JobApplication(
         user_id=user.id,

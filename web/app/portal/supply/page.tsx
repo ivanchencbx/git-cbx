@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
-import { Plus, ShoppingCart, Check, Trash2, Package } from "lucide-react";
+import { Plus, ShoppingCart, Check, Trash2, Package, ArrowLeft } from "lucide-react";
 
 interface SupplyItem {
     id: number;
@@ -64,7 +64,12 @@ export default function SupplyPage() {
             <div className="p-8 w-full max-w-5xl mx-auto">
                 <header className="flex justify-between items-center mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-800">SupplyStar</h1>
+                        <div className="flex items-center gap-4 mb-2">
+                            <Link href="/portal" className="p-2 hover:bg-gray-200 rounded-full" title="Back to Portal">
+                                <ArrowLeft size={24} color="var(--secondary)" />
+                            </Link>
+                            <h1 className="text-3xl font-bold text-gray-800">SupplyStar</h1>
+                        </div>
                         <p className="text-gray-500">Inventory & Shopping List</p>
                     </div>
                     <Link href="/portal/supply/add" className="btn-primary flex items-center gap-2" style={{ width: 'auto' }}>

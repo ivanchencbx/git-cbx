@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/app/auth-context";
 import Link from "next/link";
 import { apiClient } from "@/lib/api";
-import { Plus, Briefcase, MapPin, Building, Edit2, Clock, CheckCircle, XCircle } from "lucide-react";
+import { Plus, Briefcase, MapPin, Building, Edit2, Clock, CheckCircle, XCircle, ArrowLeft } from "lucide-react";
 
 interface JobApplication {
     id: number;
@@ -15,10 +17,17 @@ interface JobApplication {
 }
 
 export default function CareerPage() {
+    const router = useRouter();
+    const { isAuthenticated } = useAuth();
     const [applications, setApplications] = useState<JobApplication[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        if (!isAuthenticated) {
+            router.push("/login");
+            return;
+        }
+
         const fetchApps = async () => {
             try {
                 const data = await apiClient.get("/career/applications");
@@ -30,7 +39,7 @@ export default function CareerPage() {
             }
         };
         fetchApps();
-    }, []);
+    }, [isAuthenticated, router]);
 
     const getStatusColor = (status: string) => {
         switch (status.toLowerCase()) {
@@ -47,7 +56,12 @@ export default function CareerPage() {
             <div className="p-8 w-full max-w-5xl mx-auto">
                 <header className="flex justify-between items-center mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-gray-800">Job Hunter</h1>
+                        <div className="flex items-center gap-4 mb-2">
+                            <Link href="/portal" className="p-2 hover:bg-gray-200 rounded-full" title="Back to Portal">
+                                <ArrowLeft size={24} color="var(--secondary)" />
+                            </Link>
+                            <h1 className="text-3xl font-bold text-gray-800">Job Hunter</h1>
+                        </div>
                         <p className="text-gray-500">Manage your applications</p>
                     </div>
                     <div className="flex gap-4">

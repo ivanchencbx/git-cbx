@@ -1,0 +1,49 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - alert [ref=e2]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - link [ref=e5] [cursor=pointer]:
+        - /url: /portal
+        - img [ref=e6]
+      - heading "My Profile" [level=1] [ref=e8]
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - generic [ref=e11]: J
+        - generic [ref=e12]:
+          - heading "John Updated Doe" [level=2] [ref=e13]
+          - paragraph [ref=e14]: testuser1769034572744scy4pg@test.com
+        - link "Edit Profile" [ref=e15] [cursor=pointer]:
+          - /url: /portal/profile/edit
+          - img [ref=e16]
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - img [ref=e20]
+          - generic [ref=e23]:
+            - paragraph [ref=e24]: Email
+            - paragraph [ref=e25]: testuser1769034572744scy4pg@test.com
+        - generic [ref=e26]:
+          - img [ref=e27]
+          - generic [ref=e29]:
+            - paragraph [ref=e30]: Phone
+            - paragraph [ref=e31]: +1 (555) 987-6543
+        - generic [ref=e32]:
+          - img [ref=e33]
+          - generic [ref=e36]:
+            - paragraph [ref=e37]: Full Name
+            - paragraph [ref=e38]: John Updated Doe
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - paragraph [ref=e42]: Status
+          - paragraph [ref=e43]: Active
+        - generic [ref=e44]:
+          - paragraph [ref=e45]: Member Since
+          - paragraph [ref=e46]: Invalid Date
+      - generic [ref=e47]:
+        - link "Edit Profile" [ref=e48] [cursor=pointer]:
+          - /url: /portal/profile/edit
+        - link "Back to Portal" [ref=e49] [cursor=pointer]:
+          - /url: /portal
+```

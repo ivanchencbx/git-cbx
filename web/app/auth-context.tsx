@@ -26,16 +26,56 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Check for token in localStorage on mount
         const token = localStorage.getItem("cbx_token");
         if (token) {
-            // In a real app, we would validate the token with /auth/me here
-            // For now, just simulate a logged-in state
-            setUser({ email: "user@example.com" });
+            // Validate token with the backend
+            const baseUrl = typeof window !== 'undefined' ?
+                `http://${window.location.hostname}:8000` :
+                'http://localhost:8000';
+            
+            fetch(`${baseUrl}/auth/me`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => {
+                    if (res.ok) {
+                        return res.json();
+                    }
+                    throw new Error("Token validation failed");
+                })
+                .then(userData => {
+                    setUser(userData);
+                })
+                .catch(err => {
+                    console.error("Token validation failed:", err);
+                    localStorage.removeItem("cbx_token");
+                    setUser(null);
+                });
         }
     }, []);
 
     const login = (token: string) => {
         localStorage.setItem("cbx_token", token);
-        setUser({ email: "user@example.com" }); // Placeholder
-        router.push("/portal");
+        // Fetch actual user data to validate token
+        const baseUrl = typeof window !== 'undefined' ?
+            `http://${window.location.hostname}:8000` :
+            'http://localhost:8000';
+        
+        fetch(`${baseUrl}/auth/me`, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(res => res.json())
+            .then(userData => {
+                setUser(userData);
+                router.push("/portal");
+            })
+            .catch(err => {
+                console.error("Failed to fetch user data:", err);
+                // Fallback: at least set something
+                setUser({ email: token.split('.')[0] });
+                router.push("/portal");
+            });
     };
 
     const logout = () => {

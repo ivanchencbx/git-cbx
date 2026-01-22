@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import datetime
 
@@ -19,8 +19,12 @@ class User(UserBase):
     id: int
     is_active: bool
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
+
+class UserUpdate(BaseModel):
+    """Schema for updating user information"""
+    full_name: Optional[str] = None
+    phone: Optional[str] = None
 
 class Token(BaseModel):
     access_token: str
@@ -49,8 +53,7 @@ class Survey(SurveyBase):
     is_active: bool
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ResponseCreate(BaseModel):
     answers: Dict[str, Any]
@@ -60,8 +63,7 @@ class Response(ResponseCreate):
     survey_id: int
     created_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 from datetime import datetime
 
@@ -70,8 +72,7 @@ class Category(BaseModel):
     name: str
     icon: Optional[str] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ExpenseBase(BaseModel):
     amount: float # Input as float, stored as int cents in DB logic
@@ -89,8 +90,7 @@ class Expense(ExpenseBase):
     created_at: datetime
     category: Optional[Category] = None
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Career Models
 class CareerProfileBase(BaseModel):
@@ -107,8 +107,7 @@ class CareerProfile(CareerProfileBase):
     user_id: int
     updated_at: datetime
     
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 class JobApplicationBase(BaseModel):
     company: str
@@ -116,7 +115,6 @@ class JobApplicationBase(BaseModel):
     status: str = "Applied"
     salary_range: Optional[str] = None
     notes: Optional[str] = None
-    application_date: datetime = datetime.now()
 
 class JobApplicationCreate(JobApplicationBase):
     pass
@@ -124,10 +122,10 @@ class JobApplicationCreate(JobApplicationBase):
 class JobApplication(JobApplicationBase):
     id: int
     user_id: int
+    applied_date: datetime
     updated_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Supply Models
 class SupplyItemBase(BaseModel):
@@ -145,6 +143,5 @@ class SupplyItem(SupplyItemBase):
     user_id: int
     updated_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 

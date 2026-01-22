@@ -1,0 +1,68 @@
+
+> cbx-web@0.1.0 test:e2e
+> playwright test
+
+
+[1A[2K[WebServer] INFO:     Will watch for changes in these directories: ['C:\\Users\\ThinkPad\\git-cbx\\server']
+
+[1A[2K[WebServer] INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[WebServer] INFO:     Started reloader process [53560] using WatchFiles
+
+[1A[2K[WebServer] Process SpawnProcess-1:
+
+[1A[2K[WebServer] Traceback (most recent call last):
+
+[1A[2K[WebServer]   File "C:\Users\ThinkPad\git-cbx\server\main.py", line 4, in <module>
+[WebServer]     from .routers import auth, portal, survey, accounting, career, supply
+[WebServer] ImportError: attempted relative import with no known parent package
+[WebServer] 
+[WebServer] During handling of the above exception, another exception occurred:
+[WebServer] 
+[WebServer] Traceback (most recent call last):
+
+[1A[2K[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py", line 313, in _bootstrap
+[WebServer]     self.run()
+[WebServer]     ~~~~~~~~^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\multiprocessing\process.py", line 108, in run
+[WebServer]     self._target(*self._args, **self._kwargs)
+[WebServer]     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\_subprocess.py", line 78, in subprocess_started
+[WebServer]     target(sockets=sockets)
+[WebServer]     ~~~~~~^^^^^^^^^^^^^^^^^
+
+[1A[2K[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\server.py", line 62, in run
+[WebServer]     return asyncio.run(self.serve(sockets=sockets))
+[WebServer]            ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 195, in run
+[WebServer]     return runner.run(main)
+[WebServer]            ~~~~~~~~~~^^^^^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\asyncio\runners.py", line 118, in run
+[WebServer]     return self._loop.run_until_complete(task)
+[WebServer]            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+[WebServer]     return future.result()
+[WebServer]            ~~~~~~~~~~~~~^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\server.py", line 69, in serve
+[WebServer]     config.load()
+[WebServer]     ~~~~~~~~~~~^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\config.py", line 458, in load
+[WebServer]     self.loaded_app = import_from_string(self.app)
+[WebServer]                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\site-packages\uvicorn\importer.py", line 21, in import_from_string
+[WebServer]     module = importlib.import_module(module_str)
+[WebServer]   File "C:\Users\ThinkPad\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py", line 88, in import_module
+[WebServer]     return _bootstrap._gcd_import(name[level:], package, level)
+[WebServer]            ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[WebServer]   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+[WebServer]   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+[WebServer]   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+[WebServer]   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+[WebServer]   File "<frozen importlib._bootstrap_external>", line 1027, in exec_module
+[WebServer]   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+[WebServer]   File "C:\Users\ThinkPad\git-cbx\server\main.py", line 7, in <module>
+[WebServer]     from routers import auth, portal, survey, accounting, career, supply
+[WebServer]   File "C:\Users\ThinkPad\git-cbx\server\routers\auth.py", line 6, in <module>
+[WebServer]     from .. import models, schemas, auth, database
+[WebServer] ImportError: attempted relative import beyond top-level package
+Error: Process from config.webServer was not able to start. Exit code: 3221225786
+

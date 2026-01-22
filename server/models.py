@@ -12,7 +12,7 @@ class User(Base):
     full_name = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
 from sqlalchemy import ForeignKey, JSON
 from sqlalchemy import ForeignKey
@@ -79,7 +79,7 @@ class CareerProfile(Base):
     skills = Column(JSON) # List of strings ["Python", "React"]
     experience = Column(JSON) # List of dicts {company, role, duration, description}
     education = Column(JSON) # List of dicts {school, degree, year}
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     user = relationship("User", back_populates="career_profile")
 
@@ -94,7 +94,7 @@ class JobApplication(Base):
     salary_range = Column(String, nullable=True)
     notes = Column(String, nullable=True)
     applied_date = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     user = relationship("User", back_populates="job_applications")
 
@@ -111,7 +111,7 @@ class SupplyItem(Base):
     status = Column(String, default="TO_BUY") # TO_BUY, IN_STOCK
     quantity = Column(String, nullable=True) # e.g. "2 packs", "5kg"
     created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
     user = relationship("User", back_populates="supply_items")
 
