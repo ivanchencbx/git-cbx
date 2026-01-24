@@ -172,6 +172,34 @@ Each entry should include:
 
 ---
 
+### 2026-01-22
+
+#### Entry: Survey Module - Full Flow Fix
+**Date**: 2026-01-22  
+**Module**: SurveyStar（问卷瑆）  
+**Change Type**: Bug Fix / Enhancement  
+**Changes / 变更**:
+
+**English**:
+- Completed end-to-end survey flow (create → submit → view responses)
+- Fixed submission format and validation issues
+- Verified portal navigation consistency and branding
+- Documented fixes and improvements in SURVEY_* series
+
+**中文**:
+- 完成问卷完整闭环（创建→提交→查看响应）
+- 修复提交格式与校验问题
+- 验证门户返回导航与品牌一致性
+- 修复与改进文档汇总于 SURVEY_* 系列
+
+**References / 参考**:
+- SURVEY_COMPLETE_FIX.md、SURVEY_SUBMIT_FIX.md、SURVEY_VIEW_LIVE_SOLUTION.md、TEST_IMPROVEMENT_SUMMARY.md
+
+**Impact Level**: High  
+**Status**: ✅ Implemented  
+
+---
+
 ## Pending Requirements / 待处理需求
 
 None at this time.  
@@ -255,3 +283,28 @@ When a new requirement is identified:
 **Last Updated**: 2026-01-22  
 **Next Review**: 2026-02-22  
 **Maintainer**: Technical Lead
+
+---
+
+### 2026-01-24
+
+#### Entry: Documentation - Chinese Requirements Architecture & Supply Acceptance Cases
+**Date**: 2026-01-24  
+**Module**: Documentation / SupplyStar  
+**Change Type**: Documentation Update  
+**Changes / 变更**:
+
+**English**:
+- Added Chinese requirements architecture section and links in REQUIREMENTS_README.md
+- Linked Chinese docs in REQUIREMENTS_INDEX.md for discoverability
+- Created six Chinese requirements docs under requirements/ (0–5)
+- Supplemented SupplyStar doc with concrete acceptance cases (CRUD, quantity, edit/delete, validation, navigation)
+
+**中文**:
+- 在 REQUIREMENTS_README.md 增加“中文需求文档架构”入口
+- 在 REQUIREMENTS_INDEX.md 添加中文文档链接，便于导航
+- 在 requirements/ 目录新增六个中文需求文档（0–5）
+- 在补给瑆文档补充具体验收用例（CRUD、数量维护、编辑/删除、校验、导航一致性）
+
+**Impact Level**: Medium  
+**Status**: ✅ Implemented

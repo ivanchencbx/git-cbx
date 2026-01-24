@@ -13,6 +13,14 @@ Project Root
 ├── MODULE_REQUIREMENTS.md       ← Feature matrix by module (按模块的功能矩阵)
 ├── REQUIREMENTS_CHANGELOG.md    ← Change tracking (变更追踪)
 └── REQUIREMENTS_README.md       ← This documentation guide (本文档指南)
+
+### 🇨🇳 Chinese Requirements Architecture / 中文需求文档架构
+- [requirements/0-顶层需求描述文档.md](requirements/0-顶层需求描述文档.md) ← 统一原则与可复用规范
+- [requirements/1-总体需求文档.md](requirements/1-总体需求文档.md) ← 项目范围与最新摘要
+- [requirements/2-问卷瑆需求文档.md](requirements/2-问卷瑆需求文档.md) ← SurveyStar 模块需求
+- [requirements/3-职业珄需求文档.md](requirements/3-职业珄需求文档.md) ← CareerDev 模块需求
+- [requirements/4-补给瑆需求文档.md](requirements/4-补给瑆需求文档.md) ← SupplyStar 模块需求
+- [requirements/5-代账王需求文档.md](requirements/5-代账王需求文档.md) ← Accounting 模块需求
 ```
 
 ---
@@ -112,6 +120,13 @@ AVERAGE     ██████░░░ 58.2%
 - CAREER_MODULE_FIX.md - Career module bug fix details
 - implementation_plan.md - Architecture and planning
 - IMPLEMENTATION_SUMMARY.md - Implementation progress
+
+---
+
+## 🆕 Latest Updates / 最新更新
+
+- 2026-01-24: 增加中文需求文档架构入口（requirements/0-5），便于中文读者快速导航。
+- 2026-01-24: 补给瑆模块补充具体验收用例，覆盖 CRUD、数量维护、编辑/删除、异常校验与导航一致性。
 - PROJECT_STRUCTURE.md - Directory structure
 - README.md - Project readme
 

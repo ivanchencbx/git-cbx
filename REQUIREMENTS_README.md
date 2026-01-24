@@ -56,6 +56,21 @@ This directory contains all requirement specifications for the cbx.life platform
 
 ---
 
+## 🇨🇳 Chinese Requirements Architecture / 中文需求文档架构
+
+为中文读者提供结构化的需求入口（可复用）：
+
+- [requirements/0-顶层需求描述文档.md](requirements/0-顶层需求描述文档.md) — 顶层原则与流程（跨项目复用）
+- [requirements/1-总体需求文档.md](requirements/1-总体需求文档.md) — 总体范围、跨模块统一要求、完成度摘要
+- [requirements/2-问卷瑆需求文档.md](requirements/2-问卷瑆需求文档.md) — SurveyStar 模块
+- [requirements/3-职业珄需求文档.md](requirements/3-职业珄需求文档.md) — CareerDev 模块
+- [requirements/4-补给瑆需求文档.md](requirements/4-补给瑆需求文档.md) — SupplyStar 模块
+- [requirements/5-代账王需求文档.md](requirements/5-代账王需求文档.md) — Accounting 模块
+
+> 提示：中文文档与英文主规范（REQUIREMENTS.md）保持同步，重大变更以英文主规范为准。
+
+---
+
 ## 🎯 How to Use These Documents / 如何使用这些文档
 
 ### For Project Managers / 对于项目经理
