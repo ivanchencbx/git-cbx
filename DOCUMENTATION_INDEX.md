@@ -1,3 +1,36 @@
+# API Documentation Index
+
+This file summarizes the API endpoints added/updated during generation and validation rules.
+
+- **Accounting**:
+  - POST `/accounting/transactions` — create transaction
+    - fields: `type` ("Expense"|"Income"), `amount` (number, > 0), `date` (ISO date string, YYYY-MM-DD), `category` (string), `note` (string, optional)
+    - validation: `amount` must be positive; `date` parsed to ISO datetime; `type` limited to allowed values.
+  - GET `/accounting/transactions` — list transactions
+
+- **Survey**:
+  - POST `/survey` — create survey
+    - fields: `title` (string), `questions` (array of non-empty strings)
+    - validation: `questions` must be a non-empty list; each question must be a non-empty string.
+  - GET `/survey/{id}` — get survey
+  - PATCH `/survey/{id}` — update title/questions
+  - DELETE `/survey/{id}` — delete survey
+
+- **Supply**:
+  - POST `/supply/items` — create supply item
+    - fields: `name` (string), `quantity` (integer, >= 0), `status` ("available"|"reserved"|"out_of_stock")
+    - validation: `quantity` must be non-negative; `status` must be one of allowed values.
+  - GET `/supply/items` — list items
+  - PATCH/DELETE `/supply/items/{id}` — update or remove an item
+
+- **Career**:
+  - POST `/career/applications` — submit application
+    - fields: `applicant_name` (string), `position` (string), `status` ("open"|"review"|"closed"), `resume` (string, optional)
+    - validation: `applicant_name` and `position` required; `status` restricted to allowed values.
+  - GET `/career/applications/{id}` — get application
+  - DELETE `/career/applications/{id}` — delete application
+
+For details, see the route implementations under the `server/routers/` directory.
 # 📚 Documentation Index - Complete Project Documentation
 
 Complete documentation for the cbx.life platform implementation, fixes, and features.
